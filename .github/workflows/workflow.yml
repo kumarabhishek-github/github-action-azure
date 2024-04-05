@@ -1,18 +1,45 @@
 name: ask-me:workflow
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: ${{ github.actor }} is learning GitHub Actions #githu.actor -- github username  of the person who triggered this workflow
 on: [push] # Trigger the workflow on push events to main branch
 
+######################## workflow file in detail###########################
 # on: use this specify branches  to trigger the workflow, develop, feature 
 #   push:
 #     branches:
 #     - main
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: checkout
-      uses: actions/checkout@v4
+# jobs: # Groups together all the jobs that run in this workflow.
+#   Checkout-code:
+#     runs-on: ubuntu-latest    #he type of runner that will execute the job. -> latest version of an Ubuntu Linux runner. 
+#     steps: #Groups together all the steps that run in the particular job.
+#     - name: checkout 
+#       uses: actions/checkout@v4   #uses keyword specifies that this step will run  actions/checkout@v4 of the  action. 
+
+#   Install: # each job runs on sepearte  virtual machine, no files or data is preserved and passed to next job, must use artifacts or outputs to pass data
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Install Dependencies
+#       run: "npm install"
+#   Test:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Run test
+#       run: "npm run test"
+#   Build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Run build
+#       run: "npm run build"
+######################## end ###########################
+
+jobs: # Groups together all the jobs that run in this workflow.
+  build_test:
+    runs-on: ubuntu-latest # The type of runner that will execute the job. -> latest version of an Ubuntu Linux runner. 
+    steps: #Groups together all the steps that run in the particular job.
+    - name: checkout 
+      uses: actions/checkout
     - name: Install Dependencies
       run: "npm install"
-    - name: run test
-      run: "npm run test "
+    - name: Run test
+      run: "npm run test"
+    - name: create build
+      run: "npm run build"
