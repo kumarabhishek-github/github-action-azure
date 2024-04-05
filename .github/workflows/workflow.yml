@@ -1,8 +1,11 @@
 name: ask-me:workflow
-on:
-  push:
-    branches:
-    - main
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push] # Trigger the workflow on push events to main branch
+
+# on: use this specify branches  to trigger the workflow, develop, feature 
+#   push:
+#     branches:
+#     - main
 jobs:
   build:
     runs-on: ubuntu-latest
