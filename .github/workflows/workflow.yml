@@ -1,6 +1,21 @@
 name: ask-me:workflow
 run-name: ${{ github.actor }} is learning GitHub Actions #githu.actor -- github username  of the person who triggered this workflow
 on: [push] # Trigger the workflow on push events to main branch
+jobs: 
+  build_test:
+    runs-on: ubuntu-latest 
+    steps:
+    - name: checkout 
+      uses: actions/checkout@v4
+    - name: Install Dependencies
+      run: "npm install"
+    - name: Run test
+      run: "npm run test"
+    - name: create build
+      run: "npm run build"
+
+
+
 
 ######################## workflow file in detail###########################
 # on: use this specify branches  to trigger the workflow, develop, feature 
@@ -31,15 +46,3 @@ on: [push] # Trigger the workflow on push events to main branch
 #       run: "npm run build"
 ######################## end ###########################
 
-jobs: # Groups together all the jobs that run in this workflow.
-  build_test:
-    runs-on: ubuntu-latest # The type of runner that will execute the job. -> latest version of an Ubuntu Linux runner. 
-    steps: #Groups together all the steps that run in the particular job.
-    - name: checkout 
-      uses: actions/checkout
-    - name: Install Dependencies
-      run: "npm install"
-    - name: Run test
-      run: "npm run test"
-    - name: create build
-      run: "npm run build"
