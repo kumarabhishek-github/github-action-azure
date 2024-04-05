@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
-      uses: appleboy/ssh-action@v1.0.3
+      uses: actions/checkout@v4
     - name: Install Dependencies
       run: "npm install"
     - name: run test
