@@ -1,0 +1,15 @@
+name: ask-me:workflow
+on:
+  push:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: appleboy/ssh-action@v1.0.3
+    - name: Install Dependencies
+      script: "npm install \n"
+    - name: run test
+      script: "npm run test         \n #magic___^_^___line\n"
