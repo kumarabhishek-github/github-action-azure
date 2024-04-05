@@ -10,6 +10,6 @@ jobs:
     - name: checkout
       uses: appleboy/ssh-action@v1.0.3
     - name: Install Dependencies
-      script: "npm install \n"
+      run: "npm install"
     - name: run test
-      script: "npm run test         \n #magic___^_^___line\n"
+      run: "npm run test "
